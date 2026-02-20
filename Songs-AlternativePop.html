@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternative Pop Songs</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.song-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+.song-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+.song-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+/* ✅ Fixed album cover size */
+.song-details img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.song-details audio,
+.song-details video {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.song-details .lyrics {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home-btn {
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Alt Pop Songs</h1>
+
+<div class="song-list">
+    <div class="song-item" onclick="showSongDetails('song1')">When Parties Over - Billie Eilish</div>
+    <div class="song-item" onclick="showSongDetails('song2')">Everything I Wanted - Billie Eilish</div>
+    <div class="song-item" onclick="showSongDetails('song3')">Happier Than Ever - Billie Eilish</div>
+    <div class="song-item" onclick="showSongDetails('song4')">Getting Older - Billie Eilish</div>
+    <div class="song-item" onclick="showSongDetails('song5')">SKINNY - Billie Eilish</div>
+</div>
+
+<!-- SONG 1 -->
+<div id="song1" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song1')">Close</button>
+<img src=/AltPop/Images/song1.jpg">
+<audio controls>
+<source src="AltPop/Audio/song1.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+Don't you know I'm no good for you?<br>
+I've learned to lose you, can't afford to<br>
+Tore my shirt to stop you bleedin'<br>
+But nothin' ever stops you leavin'<br>
+<br>
+[Chorus]<br>
+Quiet when I'm coming home and I'm on my own<br>
+I could lie, say I like it like that, like it like that<br>
+I could lie, say I like it like that, like it like that<br>
+<br>
+[Verse 2]<br>
+Don't you know too much already?<br>
+I'll only hurt you if you let me<br>
+Call me friend, but keep me closer (Call me back)<br>
+And I'll call you when the party's over<br>
+<br>
+[Chorus]<br>
+Quiet when I'm coming home and I'm on my own<br>
+And I could lie, say I like it like that, like it like that<br>
+Yeah, I could lie, say I like it like that, like it like that<br>
+<br>
+[Bridge]<br>
+But nothin' is better sometimes<br>
+Once we've both said our goodbyes<br>
+Let's just let it go<br>
+Let me let you go<br>
+<br>
+[Chorus]<br>
+Quiet when I'm coming home and I'm on my own<br>
+I could lie, say I like it like that, like it like that<br>
+I could lie, say I like it like that, like it like that<br>
+</p></div>
+<video controls>
+<source src="AltPop/Karaoke/song1.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 2 -->
+<div id="song2" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song2')">Close</button>
+<img src="AltPop/Images/song2.jpg">
+<audio controls>
+<source src="AltPop/Audio/song2.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I had a dream<br>
+I got everything I wanted<br>
+Not what you'd think<br>
+And if I'm bein' honest<br>
+It might've been a nightmare<br>
+To anyone who might care<br>
+Thought I could fly (Fly)<br>
+So I stepped off the Golden, mm<br>
+Nobody cried (Cried, cried, cried, cried)<br>
+Nobody even noticed<br>
+I saw them standing right there<br>
+Kinda thought they might care (Might care, might care)<br>
+<br>
+[Pre-Chorus]<br>
+I had a dream<br>
+I got everything I wanted<br>
+But when I wake up, I see<br>
+You with me<br>
+<br>
+[Chorus]<br>
+And you say, "As long as I'm here, no one can hurt you<br>
+Don't wanna lie here, but you can learn to<br>
+If I could change the way that you see yourself<br>
+You wouldn't wonder why you hear<br>
+'They don't deserve you'"<br>
+<br>
+You might also like<br>
+<br>
+[Verse 2]<br>
+I tried to scream<br>
+But my head was underwater<br>
+They called me weak<br>
+Like I'm not just somebody's daughter<br>
+Coulda been a nightmare<br>
+But it felt like they were right there<br>
+And it feels like yesterday was a year ago<br>
+But I don't wanna let anybody know<br>
+'Cause everybody wants something from me now<br>
+And I don't wanna let 'em down<br>
+<br>
+[Pre-Chorus]<br>
+I had a dream<br>
+I got everything I wanted<br>
+But when I wake up, I see<br>
+You with me<br>
+<br>
+[Chorus]<br>
+And you say, "As long as I'm here, no one can hurt you<br>
+Don't wanna lie here, but you can learn to<br>
+If I could change the way that you see yourself<br>
+You wouldn't wonder why you hear<br>
+'They don't deserve you'"<br>
+<br>
+[Outro]<br>
+If I knew it all then, would I do it again?<br>
+Would I do it again?<br>
+If they knew what they said would go straight to my head<br>
+What would they say instead?<br>
+If I knew it all then, would I do it again?<br>
+Would I do it again?<br>
+If they knew what they said would go straight to my head<br>
+What would they say instead?<br>
+</p></div>
+<video controls>
+<source src="AltPop/Karaoke/song2.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 3 -->
+<div id="song3" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song3')">Close</button>
+<img src="AltPop/Images/song3.jpg">
+<audio controls>
+<source src="AltPop/Audio/song3.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Chorus]<br>
+When I'm away from you<br>
+I'm happier than ever<br>
+Wish I could explain it better<br>
+I wish it wasn't true<br>
+<br>
+[Verse 1]<br>
+Give me a day or two to think of something clever<br>
+To write myself a letter<br>
+To tell me what to do, mm-mm<br>
+Do you read my interviews?<br>
+Or do you skip my avenue?<br>
+When you said you were passin' through<br>
+Was I even on your way?<br>
+I knew when I asked you to (When I asked you to)<br>
+Be cool about what I was tellin' you<br>
+You'd do the opposite of what you said you'd do (What you said you'd do)<br>
+And I'd end up more afraid<br>
+Don't say it isn't fair<br>
+You clearly werеn't aware that you made me misеrable<br>
+So if you really wanna know<br>
+<br>
+[Chorus]<br>
+When I'm away from you (When I'm away from you)<br>
+I'm happier than ever (Happier than ever)<br>
+Wish I could explain it better (Wish I could explain it better)<br>
+I wish it wasn't true, mm-mm<br>
+<br>
+[Verse 2]<br>
+You call me again, drunk in your Benz<br>
+Drivin' home under the influence<br>
+You scared me to death, but I'm wastin' my breath<br>
+'Cause you only listen to your fuckin' friends<br>
+I don't relate to you<br>
+I don't relate to you, no<br>
+'Cause I'd never treat me this shitty<br>
+You made me hate this city<br>
+<br>
+[Verse 3]<br>
+And I don't talk shit about you on the internet<br>
+Never told anyone anything bad<br>
+'Cause that shit's embarrassing, you were my everything<br>
+And all that you did was make me fuckin' sad<br>
+So don't waste the time I don't have<br>
+And don't try to make me feel bad<br>
+I could talk about every time that you showed up on time<br>
+But I'd have an empty line 'cause you never did<br>
+Never paid any mind to my mother or friends, so I<br>
+Shut 'em all out for you 'cause I was a kid<br>
+<br>
+[Outro]<br>
+You ruined everything good<br>
+Always said you were misunderstood<br>
+Made all my moments your own<br>
+Just fuckin' leave me alone, yeah (Fuck you)<br>
+(Ah)<br>
+(Goddamn)<br>
+(Ah)<br>
+(Fuck you)<br>
+(Fuck you)<br>
+</p></div>
+<video controls>
+<source src="AltPop/Karaoke/song3.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 4 -->
+<div id="song4" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song4')">Close</button>
+<img src="AltPop/Images/song4.jpg">
+<audio controls>
+<source src="AltPop/Audio/song4.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I'm gettin' older, I think I'm agin' well<br>
+I wish someone had told me I'd be doin' this by myself<br>
+There's reasons that I'm thankful, there's a lot I'm grateful for<br>
+But it's different when a stranger's always waitin' at your door<br>
+Which is ironic 'cause the strangers seem to want me more<br>
+Than anyone before (Anyone before)<br>
+Too bad they're usually deranged<br>
+<br>
+[Verse 2]<br>
+Last week, I realized I crave pity<br>
+When I retell a story, I make everything sound worse<br>
+Can't shake the feeling that I'm just bad at healing<br>
+And maybe that's the reason every sentence sounds rehearsed<br>
+Which is ironic because when I wasn't honest<br>
+I was still bein' ignored (Lyin' for attention just to get neglection)<br>
+Now we're estranged<br>
+<br>
+[Chorus]<br>
+Things I once enjoyed<br>
+Just keep me employed now<br>
+Things I'm longing for<br>
+Someday, I'll be bored of<br>
+It's so weird<br>
+That we care so much until we don't<br>
+<br>
+[Verse 3]<br>
+I'm gettin' older, I've got more on my shoulders<br>
+But I'm gettin' better at admitting when I'm wrong<br>
+I'm happier than ever, at least, that's my endeavor<br>
+To keep myself together and prioritize my pleasure<br>
+'Cause, to be honest, I just wish that what I promise<br>
+Would depend on what I'm given, mmm (Not on his permission)<br>
+(Wasn't my decision) To be abused, mmm<br>
+<br>
+[Chorus]<br>
+Things I once enjoyed<br>
+Just keep me employed now, mmm<br>
+Things I'm longing for, mmm<br>
+Someday, I'll be bored of<br>
+It's so weird<br>
+That we care so much until we don't<br>
+<br>
+[Outro]<br>
+But next week, I hope I'm somewhere laughing<br>
+For anybody asking, I promise I'll be fine<br>
+I've had some trauma, did things I didn't wanna<br>
+Was too afraid to tell ya, but now, I think it's time<br>
+</p></div>
+<video controls>
+<source src="Songs/AltPop/Karaoke/song4.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 5 -->
+<div id="song5" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song5')">Close</button>
+<img src="AltPop/Images/song5.jpg">
+<audio controls>
+<source src="AltPop/Audio/song5.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Intro]<br>
+Hmm, hmm<br>
+<br>
+[Verse 1]<br>
+I fell in love for the first time<br>
+With a friend, it's a good sign<br>
+Feelin' off when I feel fine<br>
+Twenty-one took a lifetime<br>
+People say I look happy<br>
+Just because I got skinny<br>
+But the old me is still me and maybe the real me<br>
+And I think she's pretty<br>
+<br>
+[Chorus]<br>
+And I still cry<br>
+Cry<br>
+And you know why<br>
+<br>
+[Verse 2]<br>
+Am I acting my age now?<br>
+Am I already on the way out?<br>
+When I step off the stage, I'm a bird in a cage<br>
+I'm a dog in a dog pound<br>
+And you said I was your secret<br>
+And you didn't get to keep it<br>
+And the internet is hungry for the meanest kind of funny<br>
+And somebody's gotta feed it<br>
+<br>
+[Chorus]<br>
+Oh, do you still cry?<br>
+Still cry<br>
+Cry<br>
+<br>
+[Bridge]<br>
+I nеver did you wrong (Never did you wrong)<br>
+And my (Oh), my patiеnce is gone (Is gone)<br>
+And I (I), I never did you wrong (You)<br>
+I, I loved you for so long (Hmm)<br>
+<br>
+[Instrumental Outro]<br>
+</p></div>
+<video controls>
+<source src="AltPop/Karaoke/song5.mp4" type="video/mp4">
+</video>
+</div>
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+// Get all media
+const allMedia = document.querySelectorAll("audio, video");
+
+// Stop everything
+function pauseAllMedia() {
+    allMedia.forEach(m => {
+        m.pause();
+        m.currentTime = 0;
+    });
+}
+
+function showSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "block";
+}
+
+function closeSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "none";
+}
+
+// Only one media plays at a time
+allMedia.forEach(media => {
+    media.addEventListener("play", () => {
+        allMedia.forEach(other => {
+            if (other !== media) other.pause();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

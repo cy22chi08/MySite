@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favorites</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: relative;
+    padding-bottom: 180px; /* space for home button */
+}
+
+h1 { 
+    margin: clamp(20px, 5vh, 50px) 0;
+    text-align: center;
+}
+
+/* Container becomes responsive */
+.bubble-container {
+    display: flex;
+    flex-wrap: wrap; /* allows stacking on small screens */
+    justify-content: center;
+    gap: clamp(15px, 4vw, 40px);
+    width: 100%;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+/* Responsive bubble size */
+.bubble {
+    width: clamp(100px, 22vw, 150px);
+    height: clamp(100px, 22vw, 150px);
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    font-size: clamp(14px, 2.5vw, 18px);
+}
+
+.bubble::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 14%;
+    left: 18%;
+    filter: blur(1px);
+}
+
+.bubble a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%; /* appears below bubble */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 10px;
+    width: 160px;
+    z-index: 10;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 6px;
+    font-size: 14px;
+    color: white;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Responsive Home Button */
+.home-btn{
+    position: fixed;
+    bottom: 20px;
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vw, 150px);
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 2.5vw, 18px);
+    z-index: 100;
+}
+
+.home-btn::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 14%;
+    left: 18%;
+    filter: blur(1px);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Favorites</h1>
+
+<div class="bubble-container">
+
+    <div class="bubble">
+        <a href="Favorites-Images.html">Images</a>
+    </div>
+
+    <div class="bubble dropdown" id="songsBubble">
+        <span>Songs</span>
+        <div class="dropdown-content">
+            <a href="Songs-OPM.html">OPM</a>
+            <a href="Songs-AlternativePop.html">Alternative Pop</a>
+            <a href="Songs-JazzRNB.html">Jazz Pop</a>
+            <a href="Songs-PopRock.html">Indie Pop</a>
+            <a href="Songs-LoFi.html">Lo-Fi/RnB/Acoustic</a>
+        </div>
+    </div>
+
+    <div class="bubble dropdown" id="moviesBubble">
+        <span>Movies</span>
+        <div class="dropdown-content">
+            <a href="Movies-Fantasy.html">Fantasy</a>
+            <a href="Movies-Action.html">Action</a>
+            <a href="Movies-Adventure.html">Comedy</a>
+            <a href="Movies-Animation.html">Animation</a>
+            <a href="Movies-Drama.html">Horror</a>
+        </div>
+    </div>
+
+</div>
+
+<a href="index.html" class="home-btn">Home</a>
+
+<script>
+const bubbles = document.querySelectorAll('.bubble');
+bubbles.forEach(bubble => {
+    const duration = 3 + Math.random() * 3;
+    bubble.style.animationDuration = duration + 's';
+});
+
+const songsBubble = document.getElementById("songsBubble");
+songsBubble.addEventListener("click", e => {
+    e.stopPropagation();
+    songsBubble.classList.toggle("active");
+});
+
+const moviesBubble = document.getElementById("moviesBubble");
+moviesBubble.addEventListener("click", e => {
+    e.stopPropagation();
+    moviesBubble.classList.toggle("active");
+});
+
+document.addEventListener("click", function(){
+    songsBubble.classList.remove("active");
+    moviesBubble.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Movies</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Title */
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Movie list scroll container */
+.movie-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+/* Individual movie item */
+.movie-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.movie-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Movie details popup — fixed size */
+.movie-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;      /* fixed width */
+    height: 600px;     /* fixed height */
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 0;        /* no padding for full poster width */
+    z-index: 1000;
+    overflow: hidden;  /* no scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Poster wrapper — top part of popup */
+.movie-image-wrapper {
+    width: 100%;
+    height: 70%;       /* top 70% of popup */
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Poster fills the wrapper perfectly */
+.movie-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* changed from 'cover' to 'contain' */
+    display: block;
+    background: black; /* optional: fills empty space around poster */
+}
+
+/* Description — bottom part of popup */
+.movie-details p {
+    width: 90%;
+    margin: 10px auto 0 auto;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    height: 30%;       /* remaining 30% of popup */
+    overflow: hidden;   /* just in case */
+}
+
+/* Close button remains the same */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+
+/* Bubble back button */
+.home-btn{
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+.home-btn::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 18px;
+    left: 22px;
+    filter: blur(1px);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+</style>
+</head>
+<body>
+
+<h1>Comedy Movies</h1>
+
+<div class="movie-list">
+    <div class="movie-item" onclick="showMovieDetails('movie1')">Isko: Adventures in Animasia</div>
+    <div class="movie-item" onclick="showMovieDetails('movie2')">Pitong Gamol</div>
+    <div class="movie-item" onclick="showMovieDetails('movie3')">Michael and Madonna</div>
+    <div class="movie-item" onclick="showMovieDetails('movie4')">Andrew Ford Medina: Wag Kang Gamol</div>
+    <div class="movie-item" onclick="showMovieDetails('movie5')">Facifica Falayfay</div>
+</div>
+
+<!-- Movie Details Popups -->
+<div id="movie1" class="movie-details" style="display:none;">
+    <button class="close-btn" onclick="closeMovieDetails('movie1')">Close</button>
+    <div class="movie-image-wrapper">
+	<img src="Movies/Comedy/movie1.jpg" alt="Movie 1 Poster"></div>
+    <p><strong>Description:</strong>A jeepney driver named Isko is transported into a strange animated world called Animasia, where he encounters unusual creatures and villains. He must navigate this bizarre realm and find a way to return home while helping restore order to the fantasy world.</p>
+</div>
+
+<div id="movie2" class="movie-details" style="display:none;">
+    <button class="close-btn" onclick="closeMovieDetails('movie2')">Close</button>
+    <div class="movie-image-wrapper">
+	<img src="Movies/Comedy/movie2.jpg" alt="Movie 2 Poster"></div>
+    <p><strong>Description:</strong>A petty thief becomes entangled in a criminal scheme involving stolen money and mistaken identities. As he tries to escape trouble, a series of comedic misunderstandings and chases unfold.</p>
+</div>
+
+<div id="movie3" class="movie-details" style="display:none;">
+    <button class="close-btn" onclick="closeMovieDetails('movie3')">Close</button>
+   <div class="movie-image-wrapper">
+	<img src="Movies/Comedy/movie3.jpg" alt="Movie 3 Poster"></div>
+    <p><strong>Description:</strong>Two friends pursue dreams of fame and success, leading them into a sequence of comedic misadventures. Their efforts to improve their lives result in humorous situations and unexpected consequences.</p>
+</div>
+
+<div id="movie4" class="movie-details" style="display:none;">
+    <button class="close-btn" onclick="closeMovieDetails('movie4')">Close</button>
+    <div class="movie-image-wrapper">
+	<img src="Movies/Comedy/movie4.jpg" alt="Movie 4 Poster"></div>
+    <p><strong>Description:</strong>Andrew Ford Medina, a young man from a modest background, uses his wit and musical talent to overcome social and economic challenges. His journey involves rivalry, friendship, and comedic encounters.</p>
+</div>
+
+<div id="movie5" class="movie-details" style="display:none;">
+    <button class="close-btn" onclick="closeMovieDetails('movie5')">Close</button>
+    <div class="movie-image-wrapper">
+	<img src="Movies/Comedy/movie5.jpg" alt="Movie 5 Poster">a flamboyant man living in a rural community, struggles with family expectations and social acceptance. His attempts to change and gain approval lead to comedic and emotional situations.</div>
+    <p><strong>Description:</strong></p>
+</div>
+<!-- Add more movie popups similarly -->
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+function showMovieDetails(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function closeMovieDetails(id) {
+    document.getElementById(id).style.display = "none";
+}
+</script>
+
+</body>
+</html>

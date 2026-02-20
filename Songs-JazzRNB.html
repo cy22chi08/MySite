@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAZZ Pop Songs</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.song-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+.song-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+.song-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+/* ✅ Fixed album cover */
+.song-details img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.song-details audio,
+.song-details video {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.song-details .lyrics {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home-btn {
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Jazz Pop Songs</h1>
+
+<div class="song-list">
+    <div class="song-item" onclick="showSongDetails('song1')">From The Start - Laufey</div>
+    <div class="song-item" onclick="showSongDetails('song2')">Let You Break My Heart Again - Laufey</div>
+    <div class="song-item" onclick="showSongDetails('song3')">Promise - Laufey</div>
+    <div class="song-item" onclick="showSongDetails('song4')">Too Little, Too Late - Laufey</div>
+    <div class="song-item" onclick="showSongDetails('song5')">Valentine - Laufey</div>
+</div>
+
+<!-- SONG 1 -->
+<div id="song1" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song1')">Close</button>
+<img src="JazzPop/Images/song1.jpg">
+<audio controls>
+<source src="JazzPop/Audio/song1.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+Don't you notice how<br>
+I get quiet when there's no one else around?<br>
+Me and you and awkward silence<br>
+Don't you dare look at me that way<br>
+I don't need reminders of how you don't feel the same<br>
+<br>
+[Verse 2]<br>
+Oh, the burning pain<br>
+Listening to you harp on 'bout some new soulmate<br>
+"She's so perfect," blah, blah, blah<br>
+Oh, how I wish you'll wake up one day<br>
+Run to me, confess your love, at least just let me say<br>
+<br>
+[Chorus]<br>
+That when I talk to you<br>
+Oh, Cupid walks right through<br>
+And shoots an arrow through my heart<br>
+And I sound like a loon<br>
+But don't you feel it, too?<br>
+Confess I loved you from the start<br>
+<br>
+[Scat Break]<br>
+<br>
+[Verse 3]<br>
+What's a girl to do?<br>
+Lying on my bed staring into the bluе<br>
+Unrequited, terrifying<br>
+Lovе is driving me a bit insane<br>
+Have to get this off my chest, I'm telling you today<br>
+<br>
+[Chorus]<br>
+That when I talk to you<br>
+Oh, Cupid walks right through<br>
+And shoots an arrow through my heart<br>
+And I sound like a loon<br>
+But don't you feel it, too?<br>
+Confess I loved you from the start<br>
+<br>
+[Outro]<br>
+Confess I loved you<br>
+Just thinking of you<br>
+I know I've loved you from the start<br>
+</p></div>
+<video controls>
+<source src="JazzPop/Karaoke/song1.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 2 -->
+<div id="song2" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song2')">Close</button>
+<img src="JazzPop/Images/song2.jpg">
+<audio controls>
+<source src="JazzPop/Audio/song2.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+Feeling kind of sick tonight<br>
+All I've had is coffee and leftover pie<br>
+It's no wonder why<br>
+Still you take up all my mind<br>
+I don't even think that you care like I do<br>
+I should stop<br>
+Heaven knows I've tried<br>
+<br>
+[Chorus]<br>
+One day<br>
+I will stop falling in love with you<br>
+Some day<br>
+Someone will like me like I like you<br>
+Until then I'll drink my coffee<br>
+Eat my pie<br>
+Pretend that we are more than friends<br>
+Then of course I'll let you break my heart again<br>
+<br>
+[Verse 2]<br>
+I'm just tryna understand<br>
+What I am to you<br>
+More than songs we've exchanged<br>
+Midnight calls<br>
+Sunset views<br>
+Promise I don't mean to cry<br>
+But I get overwhelmed and confused<br>
+If only you knew<br>
+What I felt like<br>
+<br>
+[Chorus]<br>
+One day<br>
+I will stop falling in love with you<br>
+Some day<br>
+Someone will like me like I like you<br>
+Until then I'll drink my coffee<br>
+Eat my pie<br>
+Pretend that we are more than friends<br>
+Then of course I'll let you break my heart again<br>
+<br>
+[Outro]<br>
+Some day<br>
+One day<br>
+I will stop falling in love with you<br>
+Until I do<br>
+I'll be thinking of you<br>
+Let you break my heart again<br>
+</p></div>
+<video controls>
+<source src="JazzPop/Karaoke/song2.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 3 -->
+<div id="song3" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song3')">Close</button>
+<img src="JazzPop/Images/song3.jpg">
+<audio controls>
+<source src="JazzPop/Audio/song3.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I made a promise<br>
+To distance myself<br>
+Took a flight through aurora skies<br>
+Honestly I didn't think about<br>
+How we didn't say, "Goodbye"<br>
+Just, "See you very soon"<br>
+<br>
+[Chorus]<br>
+It hurts to be something<br>
+It's worse to be nothing with you<br>
+Mm, mm-mm, mm<br>
+<br>
+[Verse 2]<br>
+So, I didn't call you<br>
+For sixteen long days<br>
+And I should get a cigarette<br>
+For so much restraint<br>
+No matter how long I resist temptation<br>
+I will always lose<br>
+<br>
+[Chorus]<br>
+It hurts to be something<br>
+It's worse to be nothing with you<br>
+<br>
+[Bridge]<br>
+I've done the math<br>
+There's no solution<br>
+We'll never last<br>
+Why can't I let go of this?<br>
+<br>
+[Verse 3]<br>
+So, I broke my promise<br>
+I called you last night<br>
+I shouldn't have, I wouldn't have<br>
+If it weren't for the sight of a boy<br>
+Who lookеd just like you<br>
+Standing out on Melrose Avеnue<br>
+<br>
+[Chorus]<br>
+It hurts to be something<br>
+It's worse to be nothing with you<br>
+<br>
+[Outro]<br>
+It hurts to be something<br>
+It's worse to be nothing with you<br>
+</p></div>
+<video controls>
+<source src="JazzPop/Karaoke/song3.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 4 -->
+<div id="song4" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song4')">Close</button>
+<img src="JazzPop/Images/song4.jpg">
+<audio controls>
+<source src="JazzPop/Audio/song4.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+The whole town is talking 'bout how you've fallen in love<br>
+I read in the papers he's someone that girls dream about<br>
+Some kind of ruler on top of a kingdom<br>
+I'm just a jester, I'll never be him<br>
+Last night you called to me<br>
+It almost killed me<br>
+<br>
+[Chorus]<br>
+To hear you scream my name<br>
+Your smile still kills the same<br>
+I almost turned around<br>
+You chased me to the ground<br>
+You asked me how I've been<br>
+But how do I begin<br>
+To tell you I should've chased<br>
+You 'cross every single state?<br>
+I lay down my sword for fate<br>
+'Cause it's too little, way too late<br>
+<br>
+[Verse 2]<br>
+I didn't need the reminder of things I've done wrong<br>
+Of promises broken, fragility hidden in song<br>
+Guess that we're soulmates in different lifetimes<br>
+What if you leave him? Throw me a lifeline<br>
+I know that you're happy<br>
+But it just killed me<br>
+<br>
+[Chorus]<br>
+To hear you scream my name<br>
+A clear fucking X-ray<br>
+Of if I'd stuck around<br>
+I swear to God, I almost drowned<br>
+You asked me how I've been<br>
+But how could I begin<br>
+To tell you I should've chased you<br>
+I should be who you're engaged to?<br>
+<br>
+[Bridge]<br>
+Lost my fight with fate<br>
+A tug-of-war of leave and stay<br>
+I give in, I abdicate<br>
+I lay my sword down anyway<br>
+I'll see you at Heaven's gate<br>
+'Cause it's too little, way too late<br>
+<br>
+[Outro]<br>
+I'll toast outside your wedding day<br>
+Whisper vows I'll never say to you<br>
+'Cause it's too little, all too late<br>
+</p></div>
+<video controls>
+<source src="JazzPop/Karaoke/song4.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 5 -->
+<div id="song5" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song5')">Close</button>
+<img src="JazzPop/Images/song5.jpg">
+<audio controls>
+<source src="JazzPop/Audio/song5.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I've rejected affection<br>
+For years and years<br>
+Now I have it and damn it<br>
+It‘s kind of weird<br>
+<br>
+He tells me I'm pretty<br>
+Don't know how to respond<br>
+I tell him that he's pretty too<br>
+Can I say that? Don‘t have a clue<br>
+<br>
+[Pre-Chorus]<br>
+With every passing moment<br>
+I surprise myself<br>
+I‘m scared of flies<br>
+I‘m scared of guys<br>
+Someone please help<br>
+<br>
+[Chorus]<br>
+'Cause I think I've fallen<br>
+In love this time<br>
+I blinked and suddenly I had a Valentine<br>
+<br>
+[Verse 2]<br>
+What if he's the last one I kiss?<br>
+What if he's the only one I'll ever miss?<br>
+Maybe I should run, I'm only twenty-one<br>
+I don‘t even know who I want to become<br>
+<br>
+[Bridge]<br>
+I've lost all control of my heartbeat now<br>
+Got caught in a romance with him somehow<br>
+I still feel a shock through every bone<br>
+When I hear an “I love you”<br>
+'Cause now I've got someone to lose<br>
+<br>
+[Pre-Chorus]<br>
+The first one to ever like me back<br>
+I‘m seconds away from a heart attack<br>
+<br>
+[Chorus]<br>
+How the hell did I fall in love this time?<br>
+And honestly, I can‘t believe I get to call you mine<br>
+I blinked and suddenly<br>
+I had a Valentine<br>
+</p></div>
+<video controls>
+<source src="JazzPop/Karaoke/song5.mp4" type="video/mp4">
+</video>
+</div>
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+// Get all media
+const allMedia = document.querySelectorAll("audio, video");
+
+// Stop everything
+function pauseAllMedia() {
+    allMedia.forEach(m => {
+        m.pause();
+        m.currentTime = 0;
+    });
+}
+
+function showSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "block";
+}
+
+function closeSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "none";
+}
+
+// Only one media plays at a time
+allMedia.forEach(media => {
+    media.addEventListener("play", () => {
+        allMedia.forEach(other => {
+            if (other !== media) other.pause();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

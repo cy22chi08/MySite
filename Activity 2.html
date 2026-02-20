@@ -1,0 +1,157 @@
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            background-image: url('Img/Slime.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        img {
+            height: 210px;
+            width: 180px;
+            margin: 10px;
+            border-radius: 20px;
+            border: 5px solid;   
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.08);
+        }
+
+        img[src="Img/Rimuru.jpg"] { border-color: #00ffff; }
+        img[src="Img/Shuna.jpg"] { border-color: #ff69b4; }
+        img[src="Img/Shion.jpg"] { border-color: #9370db; }
+        img[src="Img/Souie.jpg"] { border-color: #1e90ff; }
+        img[src="Img/Benimaru.jpg"] { border-color: #ff4500; }
+        img[src="Img/Diablo.jpg"] { border-color: #8b0000; }
+        img[src="Img/Gabiru.jpg"] { border-color: #228b22; }
+        img[src="Img/Rigurd.jpg"] { border-color: #ffd700; }
+        img[src="Img/Ciel.jpg"] { border-color: #ff1493; }
+        img[src="Img/Veldora.jpg"] { border-color: #4b0082; }
+
+        /* Centered Vertical Marquee */
+        .vertical-marquee {
+            width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Bubble Button */
+        .bubble-btn {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center,
+                        rgba(0,120,255,0.6) 20%,
+                        rgba(0,60,200,0.8) 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto;
+            cursor: pointer;
+            animation: float 4s ease-in-out infinite;
+            position: relative;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,120,255,0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .bubble-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .bubble-btn::after {
+            content: "";
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            top: 18px;
+            left: 22px;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>My Favorite Characters</h2>
+
+<marquee behavior="scroll" direction="left" scrollamount="5">
+  <h2>
+    <span style="color: #ffffff; background-color: #1E90FF; padding: 3px 8px; border-radius: 5px;">
+      ACTIVITY 2
+    </span>
+  </h2>
+</marquee>
+
+<!-- CENTERED DOWN MARQUEE -->
+<marquee behavior="scroll" direction="down" scrollamount="2" height="50" class="vertical-marquee">
+  <h2>
+    <span style="color: #FFD700; background-color: #8B0000; padding: 2px 6px; border-radius: 5px;">
+      My Images
+    </span>
+  </h2>
+</marquee>
+
+<marquee behavior="alternate" direction="left" scrollamount="5">
+  <h2>
+    <span style="color: #000000; background-color: #FFA500; padding: 3px 8px; border-radius: 5px;">
+      Cortez, Jericho Cyrus S. / BSEMC 3-A
+    </span>
+  </h2>
+</marquee>
+
+<!-- CENTERED UP MARQUEE -->
+<marquee behavior="scroll" direction="up" scrollamount="2" height="50" class="vertical-marquee">
+  <h2>
+    <span style="color: #FFFFFF; background-color: #32CD32; padding: 2px 6px; border-radius: 5px;">
+      My Images
+    </span>
+  </h2>
+</marquee>
+
+<marquee behavior="scroll" direction="right" scrollamount="5">
+  <h2>
+    <span style="color: #FFFFFF; background-color: #FF4500; padding: 3px 8px; border-radius: 5px;">
+      My Images
+    </span>
+  </h2>
+</marquee>
+
+<br>
+
+<img src="Img/Rimuru.jpg">
+<img src="Img/Shuna.jpg">
+<img src="Img/Shion.jpg">
+<img src="Img/Souie.jpg">
+<img src="Img/Benimaru.jpg">
+<img src="Img/Diablo.jpg">
+<img src="Img/Gabiru.jpg">
+<img src="Img/Rigurd.jpg">
+<img src="Img/Ciel.jpg">
+<img src="Img/Veldora.jpg">
+
+<br><br>
+
+<a href="index.html" class="bubble-btn">
+    Back Home
+</a>
+
+</body>
+</html>

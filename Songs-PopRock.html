@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indie Pop Songs</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.song-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+.song-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+.song-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+/* ✅ Fixed square album cover */
+.song-details img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.song-details audio,
+.song-details video {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.song-details .lyrics {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home-btn {
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Indie Pop Songs</h1>
+
+<div class="song-list">
+    <div class="song-item" onclick="showSongDetails('song1')">Love - W2E</div>
+    <div class="song-item" onclick="showSongDetails('song2')">Daisy - W2E</div>
+    <div class="song-item" onclick="showSongDetails('song3')">Peach Eyes - W2E</div>
+    <div class="song-item" onclick="showSongDetails('song4')">Sunny Days - W2E</div>
+    <div class="song-item" onclick="showSongDetails('song5')">Light - W2E</div>
+</div>
+
+<!-- SONG 1 -->
+<div id="song1" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song1')">Close</button>
+<img src="IndiePop/Images/song1.jpg">
+<audio controls>
+<source src="IndiePop/Audio/song1.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>Saram sai saram<br>
+Baram sai baram<br>
+Gakjaui yeomwoni baraego<br>
+Deotchildoeeo<br>
+<br>
+Bari daeul mankeum gudeojimyeon<br>
+Biroso nae sesangi doeeojwo<br>
+<br>
+Naui jageun maeumdo<br>
+Geu ane jaran naeumdo<br>
+Buseojigo gudeojigo<br>
+Noganaerigonamyeon<br>
+Geujeseoya boineun naui yeongwon<br>
+<br>
+Saram sai sarang<br>
+Modu hamkke moyeoseo<br>
+Yeongwoneul barago<br>
+Mom maeum mudeonaemyeon<br>
+<br>
+Biroso uriui sesangi wanbyeokae<br>
+Sarangeuro<br>
+Sarangeuro<br>
+<br>
+Naui jageun maeumdo<br>
+Geu ane jageun padocheoreom<br>
+Buseojigo millyeowaseon<br>
+Nege noganaerigo<br>
+Geujeseoya boineun naui yeongwon<br>
+</p></div>
+<video controls>
+<source src="IndiePop/Karaoke/song1.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 2 -->
+<div id="song2" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song2')">Close</button>
+<img src="IndiePop/Images/song2.jpg">
+<audio controls>
+<source src="IndiePop/Audio/song2.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+Daisy, you're always white in your place<br>
+Even between the concrete<br>
+Daisy, every time I see you<br>
+My day is getting coloured<br>
+<br>
+[Pre-Chorus]<br>
+Babe, if you can dye me enough<br>
+Would my life be different<br>
+So, I'll just wait for you to bloom<br>
+<br>
+[Chorus]<br>
+Ma planet is like an old black and white TV<br>
+Life always goes on and on<br>
+But it's never fun at all<br>
+Oh, daisy<br>
+It's my happiness to run into you<br>
+Life always goes on and on<br>
+But I'll live with you forever<br>
+So, be my daisy<br>
+<br>
+[Verse 2]<br>
+Oh, sunny day<br>
+It's like burn in my youth<br>
+Shade is my place but you live by the sun<br>
+If you want me to<br>
+Well I'll be the rain you need<br>
+<br>
+[Pre-Chorus]<br>
+Babe, if you can dye me enough<br>
+Would my life be different<br>
+So, I'll just wait for you to bloom, yeah, yeah, yeah<br>
+<br>
+[Interlude]<br>
+Wait for you to bloom<br>
+I'll just wait for you to bloom, yeah, yeah<br>
+<br>
+[Chorus]<br>
+Ma planet is like an old black and white TV<br>
+Life always goes on and on<br>
+But it's never fun at all, yeah-ah<br>
+But daisy<br>
+It's my happiness to run into you<br>
+Life always goes on and on<br>
+But I'll live with you forever<br>
+So, be my daisy<br>
+</p></div>
+<video controls>
+<source src="IndiePop/Karaoke/song2.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 3 -->
+<div id="song3" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song3')">Close</button>
+<img src="IndiePop/Images/song3.jpg">
+<audio controls>
+<source src="IndiePop/Audio/song3.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Chorus]<br>
+Peach eyes and blue skies, I'll be with you on your ride<br>
+It's on the moonlight, how many songs I write<br>
+You'll be my sunlight, how could I not rely<br>
+On you, peach eyes?<br>
+<br>
+[Verse 1]<br>
+You're mine as soon as I watch your eyes<br>
+I couldn't find fear on my damn mind<br>
+Oh my, I'm heading into you<br>
+Hope you don't mind<br>
+Hope you don't mind<br>
+<br>
+[Pre-Chorus]<br>
+I'm talking to you<br>
+Oh, I'm talking, you<br>
+My life's so jerky, yeah<br>
+So would you let me<br>
+To hide inside your eyes?<br>
+Your peach eyes<br>
+<br>
+[Chorus]<br>
+Peach eyes and blue skies, I'll be with you on your ride<br>
+It's on the moonlight, how many songs I write<br>
+You'll be my sunlight, how could I not rely<br>
+On you, peach еyes?<br>
+<br>
+[Bridge]<br>
+The countless days I've been without you<br>
+(You are the one I need)<br>
+You know, besides<br>
+I won't find nobody to give my, aye<br>
+Whole life with you<br>
+Oh, you<br>
+<br>
+[Refrain]<br>
+Peach eyes and blue skies<br>
+Oh, it's on the moonlight<br>
+You'll be my sunlight<br>
+Peach eyes<br>
+<br>
+[Chorus]<br>
+Peach eyes and blue skies, I'll be with you on your ride<br>
+It's on the moonlight, how many songs I write<br>
+You'll be my sunlight, how could I not rely<br>
+On you, peach eyes?<br>
+<br>
+[Outro]<br>
+Peach eyes and blue skies<br>
+Oh, it's on the moonlight<br>
+You'll be my sunlight, how could I not rely<br>
+On you, peach eyes?<br>
+</p></div>
+<video controls>
+<source src="IndiePop/Karaoke/song3.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 4 -->
+<div id="song4" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song4')">Close</button>
+<img src="IndiePop/Images/song4.jpg">
+<audio controls>
+<source src="IndiePop/Audio/song4.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse]<br>
+Yeah, I've been waiting for this day, mm-yeah<br>
+The way I'm walking hand in hand with you, yeah<br>
+Just like all the sunlight is watch' over me, baby<br>
+Yes, oh-oh, it's full of your smile, yeah<br>
+I'll give it to you when I collect even the love in the air, yeah<br>
+<br>
+[Pre-Chorus]<br>
+The beautiful scenery of the streets<br>
+The chirping of birds is nothing without you<br>
+I'm nothing without you, mm-mm<br>
+Yeah, I'm nothing without you, oh-oh<br>
+<br>
+[Chorus]<br>
+We melt this love and recreate it<br>
+As we imagine it<br>
+That's how we make sunny days, yeah<br>
+'Cause you're always mysterious to mе<br>
+<br>
+[Bridge]<br>
+(Ah)<br>
+You are my golden age<br>
+Evеrything shines so bright<br>
+That my eyes go blind<br>
+Our youth never ages here<br>
+<br>
+[Chorus]<br>
+We melt this love and recreate it<br>
+As we imagine it<br>
+That's how we make sunny days, yeah<br>
+'Cause you're always mysterious to me<br>
+We melt this love and recreate it<br>
+As we imagine it<br>
+That's how we make sunny days, yeah<br>
+'Cause you're always mysterious to me<br>
+</p></div>
+<video controls>
+<source src="IndiePop/Karaoke/song4.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 5 -->
+<div id="song5" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song5')">Close</button>
+<img src="IndiePop/Images/song5.jpg">
+<audio controls>
+<source src="IndiePop/Audio/song5.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+You always wanted to see the moonlight<br>
+And I, I just wanted to see your smile<br>
+<br>
+[Chorus]<br>
+There is a light not far away from us, from us<br>
+The light will shine with the clouds<br>
+We're gonna fly up into the blue sky<br>
+So slowly<br>
+And we held the moon in our arms<br>
+You always had me<br>
+You're always shining<br>
+<br>
+[Verse 2]<br>
+I've seen a wonderful sight<br>
+With a bright glow<br>
+You are my sea, you are my sunshine<br>
+The star, the moon<br>
+<br>
+[Chorus]<br>
+There is a light not far away from us, from us<br>
+The light will shine with the clouds<br>
+We're gonna fly up into the blue sky<br>
+So slowly<br>
+And we held the moon in our arms<br>
+You always had me<br>
+You're always shining<br>
+</p></div>
+<video controls>
+<source src="IndiePop/Karaoke/song5.mp4" type="video/mp4">
+</video>
+</div>
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+// Get all media
+const allMedia = document.querySelectorAll("audio, video");
+
+// Stop everything
+function pauseAllMedia() {
+    allMedia.forEach(m => {
+        m.pause();
+        m.currentTime = 0;
+    });
+}
+
+function showSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "block";
+}
+
+function closeSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "none";
+}
+
+// Only one media plays at a time
+allMedia.forEach(media => {
+    media.addEventListener("play", () => {
+        allMedia.forEach(other => {
+            if (other !== media) other.pause();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jericho Cortez Portfolio</title>
+
+<style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+  color: white;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Bubble Section Containers */
+section {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  background: radial-gradient(circle at top left,
+      rgba(255,255,255,0.25),
+      rgba(255,255,255,0.1));
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+/* Bubble highlight */
+section::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  top: 20px;
+  left: 25px;
+  filter: blur(6px);
+}
+
+section h2, h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Avatar bubble */
+.image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left,
+      rgba(255,255,255,0.6),
+      rgba(255,255,255,0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-placeholder img {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  nav { display: none; }
+  nav.show {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .menu-toggle { display: block; }
+  section { margin: 30px 15px; padding: 25px; }
+}
+
+/* Home Button */
+.home-btn{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  background: radial-gradient(circle at top left,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.15));
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s, background 0.25s;
+  position: relative; /* for bubbles inside */
+  overflow: hidden;
+}
+
+.home-btn:hover{
+  transform: translateY(-4px);
+  background: radial-gradient(circle at top left,
+      rgba(255,255,255,0.5),
+      rgba(255,255,255,0.2));
+}
+
+/* Click bubbles */
+.click-bubble {
+    position: absolute;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.6) 10%,
+                rgba(255,255,255,0.35) 80%);
+    pointer-events: none; /* ensure button remains clickable */
+    animation: bubble-pop 1s forwards;
+}
+
+@keyframes bubble-pop {
+    0% {
+        transform: translate(0,0) scale(0.7);
+        opacity: 1;
+    }
+    15% {
+        transform: translate(calc(var(--x) * 0.5), calc(var(--y) * 0.5)) scale(1.1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(var(--x) * 0.8), calc(var(--y) * 0.8)) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">CY ARTISTRY</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="menu">
+    <a href="#about">About</a>
+    <a href="index.html">Back to Home</a>
+  </nav>
+</header>
+
+<section id="about" class="centered">
+  <h1>About Me</h1>
+  <div class="image-placeholder">
+    <img src="images/cortez-avatar.jpg" alt="CY Avatar">
+  </div>
+  <h2>Jericho Cyrus S. Cortez (CY)</h2>
+  <p>
+    Hi! Welcome to my website. I am an artist and I do my best.<br>
+    I love listening to all sorts of music but mostly I listen to both Billie Eilish and Keshi when I'm drawing.<br>
+    " Live with a dream, for dreams are a motivation to live. "
+  </p>
+</section>
+
+<div style="text-align:center; margin:40px 0;">
+  <a href="index.html" class="home-btn">Back to Home</a>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('menu').classList.toggle('show');
+}
+function openLightbox(src){
+  document.getElementById('lightbox').style.display = 'flex';
+  document.getElementById('lightboxImage').src = src;
+}
+function closeLightbox(){
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+/* Click bubble effect for Home button */
+const homeButton = document.querySelector('.home-btn');
+homeButton.addEventListener('click', function(e){
+    for(let i=0;i<8;i++){
+        const b = document.createElement('div');
+        b.className = 'click-bubble';
+        const x = (Math.random()-0.5)*120 + 'px';
+        const y = (Math.random()-1.5)*120 + 'px';
+        b.style.setProperty('--x', x);
+        b.style.setProperty('--y', y);
+        // center of button with slight random offset
+        const offset = 20;
+        b.style.left = (homeButton.offsetWidth/2 - 9 + (Math.random()-0.5)*offset) + 'px';
+        b.style.top = (homeButton.offsetHeight/2 - 9 + (Math.random()-0.5)*offset) + 'px';
+        homeButton.appendChild(b);
+        setTimeout(()=>b.remove(), 1000);
+    }
+});
+</script>
+
+</body>
+</html>

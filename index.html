@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cy's Info Page</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+h1 { margin-bottom: 40px; }
+
+.bubble-container {
+    display: flex;
+    gap: 25px;
+}
+
+/* Bubble */
+.bubble {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+}
+
+/* Highlight circle */
+.bubble::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 18px;
+    left: 22px;
+    filter: blur(1px);
+}
+
+.bubble a, .bubble span {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    bottom: -100px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 15px;
+    padding: 10px;
+    width: 140px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 6px;
+    font-size: 14px;
+    color: white;
+}
+
+/* visible when active */
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Click bubbles */
+.click-bubble {
+    position: absolute;
+    border-radius: 50%;
+    width: 18px;   /* bigger size */
+    height: 18px;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.6) 10%,
+                rgba(255,255,255,0.35) 80%);
+    pointer-events: none;
+    animation: bubble-pop 1s forwards;
+}
+
+@keyframes bubble-pop {
+    0% {
+        transform: translate(0,0) scale(0.7);
+        opacity: 1;
+    }
+    15% {
+        transform: translate(calc(var(--x) * 0.5), calc(var(--y) * 0.5)) scale(1.1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(var(--x) * 0.8), calc(var(--y) * 0.8)) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Home Page</h1>
+
+<div class="bubble-container">
+
+    <div class="bubble">
+        <a href="About Me.html">About Me</a>
+    </div>
+
+    <div class="bubble dropdown" id="activityBubble">
+        <span>Activities</span>
+        <div class="dropdown-content">
+            <a href="Activity 1.html">Activity 1</a>
+            <a href="Activity 2.html">Activity 2</a>
+        </div>
+    </div>
+
+    <div class="bubble">
+        <a href="Gallery.html">Gallery</a>
+    </div>
+
+    <div class="bubble">
+        <a href="Favorites.html">Favorites</a>
+    </div>
+
+</div>
+
+<script>
+/* random float speed */
+const bubbles = document.querySelectorAll('.bubble');
+bubbles.forEach(bubble => {
+    const duration = 3 + Math.random() * 3;
+    bubble.style.animationDuration = duration + 's';
+});
+
+/* click dropdown */
+const activity = document.getElementById("activityBubble");
+activity.addEventListener("click", function(e){
+    e.stopPropagation();
+    activity.classList.toggle("active");
+});
+
+document.addEventListener("click", function(){
+    activity.classList.remove("active");
+});
+
+/* Click bubble effect */
+bubbles.forEach(bubble => {
+    bubble.addEventListener('click', function(e) {
+        for (let i = 0; i < 8; i++) { // number of little bubbles
+            const b = document.createElement('div');
+            b.className = 'click-bubble';
+            const x = (Math.random() - 0.5) * 120 + 'px'; // wider spread
+            const y = (Math.random() - 1.5) * 120 + 'px'; // upward
+            b.style.setProperty('--x', x);
+            b.style.setProperty('--y', y);
+            
+            // Spawn offset from mouse to avoid blocking
+            const offset = 20;
+            b.style.left = (bubble.offsetWidth / 2 - 9 + (Math.random() - 0.5) * offset) + 'px';
+            b.style.top = (bubble.offsetHeight / 2 - 9 + (Math.random() - 0.5) * offset) + 'px';
+            
+            bubble.appendChild(b);
+            setTimeout(() => b.remove(), 1000);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

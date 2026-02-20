@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+
+<style>
+
+/* Background (same theme as Web 1) */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #001f3f, #003f7f);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title */
+h1 {
+    color: white;
+    margin-top: 30px;
+    font-size: 2.5rem;
+}
+
+/* Gallery Grid */
+.gallery-container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Image Boxes */
+.image-box {
+    border: 3px solid #66ccff; /* light blue border */
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #66ccff;
+}
+
+.image-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Fullscreen Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal img {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain; /* no stretch */
+}
+
+.modal:target {
+    display: block;
+}
+
+/* Bubble Button (floating circular style) */
+.bubble-container {
+    margin: 50px 0;
+}
+
+.bubble {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden; /* for bubbles inside */
+}
+
+.bubble::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 18px;
+    left: 22px;
+    filter: blur(1px);
+}
+
+.bubble a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 1;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Click bubbles */
+.click-bubble {
+    position: absolute;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.6) 10%,
+                rgba(255,255,255,0.35) 80%);
+    pointer-events: none;
+    animation: bubble-pop 1s forwards;
+}
+
+@keyframes bubble-pop {
+    0% {
+        transform: translate(0,0) scale(0.7);
+        opacity: 1;
+    }
+    15% {
+        transform: translate(calc(var(--x) * 0.5), calc(var(--y) * 0.5)) scale(1.1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(var(--x) * 0.8), calc(var(--y) * 0.8)) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<h1>Gallery</h1>
+
+<div class="gallery-container">
+    <div class="image-box"><a href="#img1"><img src="Gallery/dragonboy.png" alt=""></a></div>
+    <div class="image-box"><a href="#img2"><img src="Gallery/logo2.png" alt=""></a></div>
+    <div class="image-box"><a href="#img3"><img src="Gallery/painting.jpg" alt=""></a></div>
+    <div class="image-box"><a href="#img4"><img src="Gallery/frog.jpg" alt=""></a></div>
+    <div class="image-box"><a href="#img5"><img src="Gallery/prod1.jpg" alt=""></a></div>
+    <div class="image-box"><a href="#img6"><img src="Gallery/logo.png" alt=""></a></div>
+    <div class="image-box"><a href="#img7"><img src="Gallery/project3.png" alt=""></a></div>
+    <div class="image-box"><a href="#img8"><img src="Gallery/soya.png" alt=""></a></div>
+    <div class="image-box"><a href="#img9"><img src="Gallery/uzoth.png" alt=""></a></div>
+    <div class="image-box"><a href="#img10"><img src="Gallery/sketch1.jpg" alt=""></a></div>
+</div>
+
+<!-- Full Image Modals -->
+<div id="img1" class="modal"><a href="#"><img src="Gallery/dragonboy.png"></a></div>
+<div id="img2" class="modal"><a href="#"><img src="Gallery/logo2.png"></a></div>
+<div id="img3" class="modal"><a href="#"><img src="Gallery/painting.jpg"></a></div>
+<div id="img4" class="modal"><a href="#"><img src="Gallery/frog.jpg"></a></div>
+<div id="img5" class="modal"><a href="#"><img src="Gallery/prod1.jpg"></a></div>
+<div id="img6" class="modal"><a href="#"><img src="Gallery/logo.png"></a></div>
+<div id="img7" class="modal"><a href="#"><img src="Gallery/project3.png"></a></div>
+<div id="img8" class="modal"><a href="#"><img src="Gallery/soya.png"></a></div>
+<div id="img9" class="modal"><a href="#"><img src="Gallery/uzoth.png"></a></div>
+<div id="img10" class="modal"><a href="#"><img src="Gallery/sketch1.jpg"></a></div>
+
+<!-- Back to Home Bubble -->
+<div class="bubble-container">
+    <div class="bubble">
+        <a href="index.html">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    // Random float speed
+    const bubble = document.querySelector('.bubble');
+    const duration = 3 + Math.random() * 3;
+    bubble.style.animationDuration = duration + 's';
+
+    // Click bubble effect
+    bubble.addEventListener('click', function(e){
+        for(let i=0;i<8;i++){
+            const b = document.createElement('div');
+            b.className = 'click-bubble';
+            const x = (Math.random()-0.5)*120 + 'px';
+            const y = (Math.random()-1.5)*120 + 'px';
+            b.style.setProperty('--x', x);
+            b.style.setProperty('--y', y);
+            const offset = 20;
+            b.style.left = (bubble.offsetWidth/2 - 9 + (Math.random()-0.5)*offset) + 'px';
+            b.style.top = (bubble.offsetHeight/2 - 9 + (Math.random()-0.5)*offset) + 'px';
+            bubble.appendChild(b);
+            setTimeout(()=>b.remove(), 1000);
+        }
+    });
+</script>
+
+</body>
+</html>

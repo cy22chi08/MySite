@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoFi/RnB/Acoustic Songs</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.song-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+.song-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+.song-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+.song-details img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.song-details audio,
+.song-details video {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.song-details .lyrics {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home-btn {
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>LoFi/RnB/Acoustic Songs</h1>
+
+<div class="song-list">
+    <div class="song-item" onclick="showSongDetails('song1')">Soft Spot - Keshi</div>
+    <div class="song-item" onclick="showSongDetails('song2')">Bodies - Keshi</div>
+    <div class="song-item" onclick="showSongDetails('song3')">LIMBO - Keshi</div>
+    <div class="song-item" onclick="showSongDetails('song4')">Touch - Keshi</div>
+    <div class="song-item" onclick="showSongDetails('song5')">Understand - Keshi </div>
+</div>
+
+<!-- SONG 1 -->
+<div id="song1" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song1')">Close</button>
+<img src=/LoFi/Images/song1.jpg">
+<audio controls>
+<source src="LoFi/Audio/song1.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I don't go out, but I’ll do it for you<br>
+You never liked it when I drink too much<br>
+I hate to dance, but I'll dance with you<br>
+'Cause I’d do anything to feel your touch<br>
+<br>
+[Pre-Chorus]<br>
+Don't like anybody, tell me why it's different with you<br>
+Don't believe in love, but no one makes me feel like you do<br>
+I don't say it much, 'cause I just always thought that you knew, ahh<br>
+<br>
+[Chorus]<br>
+It's what you do to me<br>
+I'm wrapped around your finger and I can’t stop<br>
+You know I got a soft spot for you<br>
+You know I got a soft spot for you<br>
+Baby, can’t you see?<br>
+I need you, 'cause you’re everything that I'm not<br>
+You know I got a soft spot for you<br>
+You know I got a soft spot for you<br>
+<br>
+[Verse 2]<br>
+Too late<br>
+Don't wanna fall, baby, I just<br>
+Don't need somebody else to throw me aside<br>
+But I’m up all night<br>
+Thinkin' 'bout how it can be you to change my heart, but I<br>
+<br>
+[Pre-Chorus]<br>
+Don't like anybody, tell me why it's different with you<br>
+Don't believe in love, but no one makes me feel like you do<br>
+I don't say it much, 'cause I just always thought that you knew, ahh<br>
+<br>
+[Chorus]<br>
+It's what you do to me<br>
+I'm wrapped around your finger and I can't stop<br>
+You know I got a soft spot for you<br>
+You know I got a soft spot for you<br>
+Baby, can't you see?<br>
+I need you, 'cause you're everything that I'm not<br>
+You know I got a soft spot for you<br>
+You know I got a soft spot for you<br>
+<br>
+[Bridge]<br>
+For you<br>
+For you<br>
+For you<br>
+You know I got a soft spot for you<br>
+<br>
+[Outro]<br>
+It's what you do to me<br>
+I'm wrapped around your finger and I can't stop<br>
+You know I got a soft spot for you<br>
+You know I got a soft spot for you<br>
+</p></div>
+<video controls>
+<source src="LoFi/Karaoke/song1.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 2 -->
+<div id="song2" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song2')">Close</button>
+<img src="LoFi/Images/song2.jpg">
+<audio controls>
+<source src="LoFi/Audio/song2.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+I take it you’re leaving<br>
+This never gets easier for me<br>
+I’ll miss how you promised me the world, and I believed it<br>
+You give me your reasons<br>
+And they cut me deeper than it seems<br>
+No need to worry 'bout it<br>
+I can stop the bleeding<br>
+<br>
+[Chorus]<br>
+Oh, babe, you know<br>
+It happens all the time<br>
+You give your heart to someone<br>
+But they go and change their mind<br>
+<br>
+[Post-Chorus]<br>
+Everybody wants somebody<br>
+Needs nobody, anybody<br>
+<br>
+[Verse 2]<br>
+Used to things fallin' apart<br>
+Knew how it would end from the start<br>
+But I can’t help but chase the feeling<br>
+<br>
+[Chorus]<br>
+Ohh-oh, but, babе, you know<br>
+It happens all the time<br>
+You givе your heart to someone<br>
+But they go and change their mind<br>
+You don’t have to stay you know<br>
+If it’s all a waste of time<br>
+'Cause I’m used to having no one<br>
+To lay here by my side<br>
+<br>
+[Post-Chorus]<br>
+Everybody wants somebody, needs nobody, anybody<br>
+Everybody wants somebody, needs nobody, anybody<br>
+Ooh, you leave me torn in two, ooh<br>
+Ooh, like they always do, ooh<br>
+<br>
+[Outro]<br>
+Everybody wants somebody (Somebody)<br>
+Needs nobody, anybody (Somebody)<br>
+Everybody wants somebody (Somebody)<br>
+Needs nobody, anybody (Somebody)<br>
+(Body-body)<br></p></div>
+<video controls>
+<source src="Songs/LoFi/Karaoke/song2.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 3 -->
+<div id="song3" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song3')">Close</button>
+<img src="LoFi/Images/song3.jpg">
+<audio controls>
+<source src="LoFi/Audio/song3.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Intro]<br>
+Ooh<br>
+Ooh-ooh-ooh-ooh<br>
+Ooh-ooh-ooh-ooh, ooh<br>
+Ooh-ooh, ooh<br>
+Ooh-ooh-ooh-ooh, ooh<br>
+Ooh-ooh, ooh<br>
+<br>
+[Verse 1]<br>
+I just been goin' through motions, back and forth like a ocean<br>
+I am a fraud, I am the shit, hoping that nobody notice<br>
+Bang chest in the morning, head down in the night<br>
+Drink less if I wanted, strike up with the light<br>
+And square up, I’m the mightest<br>
+Myself in the fight, hurt twice but I tried it<br>
+No advice for this shit, might die for this shit<br>
+Do I feel alive, feel alive, feel alive?<br>
+<br>
+[Chorus]<br>
+Feel more like limbo, hands out my window<br>
+Chasin' that sunset, that's more my tempo<br>
+Yeah, that’s more my tempo<br>
+Ooh, but this is all that I am<br>
+I only show you the best of me<br>
+The best of me<br>
+<br>
+[Verse 2]<br>
+Looked in my demons and saw myself<br>
+Put all my meanin' in someone else<br>
+Outta sight, outta mind, don't know where to find it<br>
+Don't know where to hide, but I still<br>
+Eat good, drink good, feel good, s'all good<br>
+Can't hear my head when I'm sat beside ya<br>
+Fucked lungs and a liver, good looks in the mirror<br>
+Do I feel alive, feel alive, feel alive?<br>
+<br>
+[Chorus]<br>
+Feel more like limbo, hands out my window<br>
+Chasin' that sunset, that’s more my tempo<br>
+That’s more my tempo<br>
+(keshi) Ooh, but this is all that I am<br>
+I only show you the best of me<br>
+The best of me<br>
+Ooh, tryin' but I’m just a man<br>
+Hopin' it won't get the best of me<br>
+The best of me<br>
+</p></div>
+<video controls>
+<source src="LoFi/Karaoke/song3.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 4 -->
+<div id="song4" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song4')">Close</button>
+<img src="Lofi/Images/song4.jpg">
+<audio controls>
+<source src="Lofi/Audio/song4.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Intro]<br>
+Wrong but it feels so right<br>
+Wrong but it feels so right<br>
+It don’t make sense but it feels so nice<br>
+Show me, show me, oh<br>
+Show me your chest on mine<br>
+Show me your legs up high<br>
+I don’t wanna kiss all night, kiss all night<br>
+(Ohh)<br>
+<br>
+[Chorus]<br>
+Wrong but it feels so right<br>
+Wrong but it feels so right<br>
+It don’t make sense, but it feels so nice<br>
+Show me, show me, oh<br>
+Show me your chest on mine<br>
+Show me your legs up high<br>
+I don’t wanna kiss all night, kiss all night<br>
+<br>
+[Verse 1]<br>
+If you want me, say you want me<br>
+Treadin' softly, on my body while you tell me<br>
+That you’re takin' it slow, but you’re pullin' me close<br>
+If I bow to the throne, is it better than us?<br>
+Give me comfort, give me warnin'<br>
+When I wake, you’rе always missin' in the mornin'<br>
+But you don’t need to run, if you’re looking for love<br>
+Said it’s only a touch, is it bеtter than us to you?<br>
+<br>
+[Chorus]<br>
+Wrong but it feels so right<br>
+Wrong but it feels so right<br>
+It don’t make sense, but it feels so nice<br>
+Show me, show me, oh<br>
+Show me your chest on mine<br>
+Show me your legs up high<br>
+I don’t wanna kiss all night, kiss all night<br>
+<br>
+[Verse 2]<br>
+Hmm, hmm, hmm-hmm<br>
+Hmm, hmm, hmm-hmm<br>
+Can’t talk with your tongue in my mouth<br>
+I was thinkin' 'bout us when you’re runnin' about<br>
+Saw another one’s car at the front of the house<br>
+Knew I never meant much, but it’s killin' me now<br>
+Mmm, mmm<br>
+Tell me all the things I wanna hear, so come here<br>
+Beautiful, anyone will do<br>
+But you don’t need to run, if you’re looking for love<br>
+If it’s only a touch, was it better than us to you?<br>
+<br>
+[Chorus]<br>
+Wrong but it feels so right<br>
+Wrong but it feels so right<br>
+It don’t make sense, but it feels so nice<br>
+Show me, show me, oh<br>
+Show me your chest on mine<br>
+Show me your legs up high<br>
+I don’t wanna kiss all night, kiss all night<br>
+<br>
+[Outro]<br>
+Wrong but it feels— wrong— wrong— it—<br>
+Wrong but it feels so right— right<br>
+It don't make sense, but it feels so nice— nice<br>
+Show me, show m—, —ice<br>
+</p></div>
+<video controls>
+<source src="Lofi/Karaoke/song4.mp4" type="video/mp4">
+</video>
+</div>
+
+<!-- SONG 5 -->
+<div id="song5" class="song-details">
+<button class="close-btn" onclick="closeSongDetails('song5')">Close</button>
+<img src="Lofi/Images/song5.jpg">
+<audio controls>
+<source src="Lofi/Audio/song5.mp3" type="audio/mpeg">
+</audio>
+<div class="lyrics"><h3>Lyrics:</h3><p>[Verse 1]<br>
+Never thought that I'd find<br>
+That the one in my life would be so near<br>
+And now you're here<br>
+I got you, you got me<br>
+When it's us, babe, you make me feel complete<br>
+You're all I need<br>
+<br>
+[Chorus]<br>
+Ooh, ooh<br>
+Maybe we can try it if you let me<br>
+Take you by the hand<br>
+You're the only one who understands<br>
+<br>
+[Verse 2]<br>
+So I guess that it's time<br>
+I asked you to be mine for all my days<br>
+I hope you'll stay<br>
+I'll admit that I'm scared<br>
+'Cause I've never really cared as much as this<br>
+It's worth the risk<br>
+<br>
+[Chorus]<br>
+Ooh, ooh-ooh<br>
+Maybe we can try it if you let me<br>
+Take you by the hand<br>
+You're the only one who understands<br>
+Ooh, ooh-ooh<br>
+<br>
+[Outro]<br>
+Ooh, ooh<br>
+Maybe we can try it if you let me<br>
+Take you by the hand<br>
+You're the only one who understands<br>
+</p></div>
+<video controls>
+<source src="Lofi/Karaoke/song5.mp4" type="video/mp4">
+</video>
+</div>
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+// Get all media
+const allMedia = document.querySelectorAll("audio, video");
+
+// Stop everything
+function pauseAllMedia() {
+    allMedia.forEach(m => {
+        m.pause();
+        m.currentTime = 0;
+    });
+}
+
+function showSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "block";
+}
+
+function closeSongDetails(id) {
+    pauseAllMedia();
+    document.getElementById(id).style.display = "none";
+}
+
+// Only one media plays at a time
+allMedia.forEach(media => {
+    media.addEventListener("play", () => {
+        allMedia.forEach(other => {
+            if (other !== media) other.pause();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

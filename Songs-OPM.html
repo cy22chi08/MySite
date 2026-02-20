@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPM Songs</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a1a3a, #5fa3ff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Title */
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Song list scroll container */
+.song-list {
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+}
+
+/* Individual song item */
+.song-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.song-item:hover {
+    transform: scale(1.02);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Song details container (pop-up) */
+.song-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+/* Song details content */
+.song-details img {
+    width: 250px;        /* fixed size */
+    height: 250px;       /* same height = square */
+    object-fit: cover;   /* keeps image clean */
+    border-radius: 15px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+
+.song-details audio,
+.song-details video {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.song-details .lyrics {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* Back Button */
+.home-btn{
+    position: fixed;
+    bottom: 30px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+                rgba(255,255,255,0.10) 10%,
+                rgba(255,255,255,0.35) 80%);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    animation: float 4s ease-in-out infinite;
+}
+
+.home-btn::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 18px;
+    left: 22px;
+    filter: blur(1px);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+</style>
+</head>
+<body>
+
+<h1>OPM Songs</h1>
+
+<div class="song-list">
+    <div class="song-item" onclick="showSongDetails('song1')">Miss Miss - Rob Deniel</div>
+    <div class="song-item" onclick="showSongDetails('song2')">Ulap - Rob Deniel</div>
+    <div class="song-item" onclick="showSongDetails('song3')">Sinta - Rob Deniel</div>
+    <div class="song-item" onclick="showSongDetails('song4')">Kundiman - Rob Deniel</div>
+    <div class="song-item" onclick="showSongDetails('song5')">Rom Com - Rob Deniel</div>
+</div>
+
+<!-- Song Details Popups -->
+<div id="song1" class="song-details">
+    <button class="close-btn" onclick="closeSongDetails('song1')">Close</button>
+    <img src="OPM/Images/song1.jpg" alt="Song 1 Image">
+    <audio controls>
+        <source src="OPM/Audio/song1.m4a" type="audio/mpeg">
+    </audio>
+    <div class="lyrics">
+        <h3>Lyrics:</h3>
+        <p>[Verse 1]
+Hawak ang iyong mga kamay, sinta <br>
+Kahit nasa panaginip lang kita <br>
+Ako'y handang sumugal, handang sumugal <br>
+Makita ka lang<br>
+<br>
+[Pre-Chorus]<br>
+Oh, nasa'n ka ba, mahal?<br>
+Hinahanap ka na ng puso ko<br>
+<br>
+[Chorus]
+Baby, ikaw lang talaga<br>
+Ang nami-miss ko sa tuwi-t'wina<br>
+Sa tuwi-t'wina<br>
+At baby, ako'y mag-aabang<br>
+At dadalhin ka sa nakaraan<br>
+Sa nakaraan<br>
+<br>
+[Verse 2]<br>
+Malayo man ako sa'yo, sinta<br>
+Uwi ka na kahit saan pang lugar<br>
+Ipagdarasal<br>
+Makita ka lang<br>
+<br>
+[Pre-Chorus]<br>
+Oh, nasa'n ka ba, mahal?<br>
+Hinahanap ka na ng puso ko<br>
+<br>
+[Chorus]<br>
+Baby, ikaw lang talaga<br>
+Ang nami-miss ko sa tuwi-t'wina<br>
+Sa tuwi-t'wina<br>
+At baby, ako'y mag-aabang<br>
+At dadalhin ka sa nakaraan<br>
+Sa nakaraan<br>
+<br>
+[Bridge]<br>
+Oh, magkita na tayo, please?<br>
+Palagi kang nami-miss, oh-oh, oh, oh<br>
+Oh, magkita na tayo, please?<br>
+Palagi kang nami-miss, oh-oh, oh, oh<br>
+<br>
+[Instrumental Break]<br>
+<br>
+[Chorus]<br>
+Baby, ikaw lang talaga<br>
+Ang nami-miss ko sa tuwi-t'wina<br>
+Sa tuwi-t'wina<br>
+At baby, ako'y mag-aabang<br>
+At dadalhin ka sa nakaraan<br>
+Sa nakaraan, oh<br>
+<br>
+[Outro]
+Oh-oh-oh<br>
+Oh-oh-oh<br>
+Oh-oh-oh, ooh<br>
+</p>
+    </div>
+    <video controls>
+        <source src="OPM/Karaoke/song1.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="song2" class="song-details">
+    <button class="close-btn" onclick="closeSongDetails('song2')">Close</button>
+    <img src="OPM/Images/song2.jpg" alt="Song 2 Image">
+    <audio controls>
+        <source src="OPM/Audio/song2.mp3" type="audio/mpeg">
+    </audio>
+    <div class="lyrics">
+        <h3>Lyrics:</h3>
+        <p>[Verse 1] <br>
+Nag-iisa<br>
+Nakadungaw<br>
+Sa bintana<br>
+Ako ba'y nagkulang?<br>
+Nakaupo<br>
+Lumalayo<br>
+Sa tukso<br>
+Upang 'di magulo<br>
+<br>
+[Chorus]<br>
+Isasayaw<br>
+Ka sa ulap<br>
+At mag-uusap<br>
+Hindi manghuhula<br>
+Isasayaw<br>
+Ka sa ulap<br>
+Hindi hahayaang<br>
+Mahulog nang tuluyan<br>
+<br>
+[Verse 2]<br>
+Nagkamali (Nagkamali)<br>
+Ba ako sa'yo?<br>
+Nananatiling<br>
+Blangko ito (Blangko ito)<br>
+Naririnig<br>
+Ang tinig mo<br>
+Nabubuong muli<br>
+Ang pag-ibig ko (Ang pag-ibig ko)<br>
+<br>
+[Chorus]<br>
+Isasayaw<br>
+Ka sa ulap<br>
+At mag-uusap<br>
+Hindi manghuhula<br>
+Isasayaw<br>
+Ka sa ulap<br>
+Hindi hahayaang<br>
+Mahulog nang tuluyan<br>
+<br>
+[Bridge]<br>
+Oh-oh (La-la-la)<br>
+Gusto kang makasama (La-la-la)<br>
+Ako na ang bahala (La-la-la)<br>
+'Wag ka lang mawalay (La-la-la)<br>
+Atin nang kulayan (La-la-la)<br>
+Ang munting mundo (La-la-la)<br>
+Tumingin sa akin (La-la-la)<br>
+Langhapin ang hangin (La-la-la)<br>
+Bakit ba nasanay? (La-la-la)<br>
+Isip ay nadadamay (La-la-la)<br>
+Sa puso (La-la-la)<br>
+<br>
+[Chorus]<br>
+Isasayaw (Ooh, ooh)<br>
+Ka sa ulap (Ooh, ooh)<br>
+At mag-uusap (Ooh, ooh)<br>
+Hindi manghuhula (Ooh, ooh)<br>
+Isasayaw (Ooh, ooh)<br>
+Ka sa ulap (Ooh, ooh)<br>
+Hindi hahayaang (Ooh, ooh)<br>
+Mahulog nang tuluyan (Ooh, ooh)<br>
+<br>
+[Outro]<br>
+Nag-iisa<br>
+Nakadungaw<br>
+</p>
+    </div>
+    <video controls>
+        <source src="OPM/Karaoke/song2.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="song3" class="song-details">
+    <button class="close-btn" onclick="closeSongDetails('song3')">Close</button>
+    <img src="OPM/Images/song3.jpg" alt="Song 3 Image">
+    <audio controls>
+        <source src="OPM/Audio/song3.mp3" type="audio/mpeg">
+    </audio>
+    <div class="lyrics">
+        <h3>Lyrics:</h3>
+        <p>[Vers 1]<br>
+Halik ba talaga<br>
+Ang gagana sa iyong tingin, hmm<br>
+Alam mo ba<br>
+Naiisip ko pa rin mga gabi na magkatabi<br>
+<br>
+Oh, ang tangi kong hiling<br>
+Kahit sa panaginip na lang<br>
+Oh, I'll take this as a chance<br>
+To give you all the time that you need, oh<br>
+<br>
+Sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako'y maghihintay sa 'yong pagdating<br>
+At tatanggapin kita<br>
+<br>
+Oh... sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako ay hihimlay sa 'yong tabi<br>
+At tatanggapin kita<br>
+<br>
+Are we old enough<br>
+To leave the stars tonight<br>
+We could kiss it right<br>
+Ikaw ang bulaklak na kumukulay sa paligid natin<br>
+<br>
+Oh, ang tangi kong hiling<br>
+Kahit sa panaginip na lang<br>
+Oh, I'll take this as a chance<br>
+To give you all the time that you need, ohh<br>
+<br>
+Sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako'y maghihintay sa 'yong pagdating<br>
+At tatanggapin kita<br>
+<br>
+Ohh... sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako ay hihimlay sa 'yong tabi<br>
+At tatanggapin kita, ohh<br>
+<br>
+Sinta ('di mo ba naririnig, sinta)<br>
+Oh, sinta<br>
+Sana'y manatili ka pa<br>
+Manatili ka kahit saglit<br>
+<br>
+Sinta ('di mo ba naririnig, sinta)<br>
+Oh, sinta<br>
+Sana'y manatili ka pa<br>
+Manatili ka kahit saglit<br>
+<br>
+Oh... sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako'y maghihintay sa 'yong pagdating<br>
+At tatanggapin kita<br>
+Oh oh...<br>
+<br>
+Oh... sinta<br>
+Oh kay gandang umibig sa 'yo<br>
+Ako ay hihimlay sa 'yong tabi<br>
+At tatanggapin kita, ohh<br>
+<br>
+(Oh, sinta)<br>
+('Di mo ba naririnig, sinta)<br>
+(Ako'y maghihintay sa 'yong pagdating)<br>
+(At tatanggapin kita)<br>
+<br>
+(Oh, sinta)<br>
+('Di mo ba naririnig, sinta)<br>
+(Ako'y maghihintay sa 'yong pagdating)<br>
+</p>
+    </div>
+    <video controls>
+        <source src="OPM/Karaoke/song3.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="song4" class="song-details">
+    <button class="close-btn" onclick="closeSongDetails('song4')">Close</button>
+    <img src="OPM/Images/song4.jpg" alt="Song 4 Image">
+    <audio controls>
+        <source src="OPM/Audio/song4.mp3" type="audio/mpeg">
+    </audio>
+    <div class="lyrics">
+        <h3>Lyrics:</h3>
+        <p>[Verse 1]<br>
+Ikaw ay diwata<br>
+Na hindi ko makukuha, malalapitan<br>
+Ilan pa bang rosas<br>
+Upang ako'y mahagkan mo na<br>
+At nabighani na?<br>
+<br>
+[Pre-Chorus]<br>
+At sana'y pakinggan mo<br>
+Ang himig na alay sa'yo<br>
+O, sinta<br>
+<br>
+[Chorus]<br>
+Aawitan kita ng kundiman<br>
+Tititigan kita nang lubusan<br>
+At sa eksenang ito, oh, please<br>
+'Wag ka nang lalayo<br>
+Kaya't aawitan na lang kita ng kundiman<br>
+Kundiman<br>
+<br>
+[Verse 2]<br>
+Nasa'n ang alak?<br>
+Wala ka bang balak<br>
+Oh, sa 'king hiling<br>
+Na tumingin sa 'king mga mata<br>
+Oh, oh<br>
+<br>
+[Pre-Chorus]<br>
+At sana'y pakinggan mo<br>
+Ang himig na alay sa'yo<br>
+O, sinta, oh<br>
+<br>
+[Chorus]<br>
+Aawitan kita ng kundiman<br>
+Tititigan kita nang lubusan<br>
+Oh, at sa eksenang ito, oh, please<br>
+'Wag ka nang lalayo<br>
+Kaya't aawitan na lang kita ng kundiman<br>
+Oh, kundiman<br>
+Oh-oh-oh, oh<br>
+Oh-oh-oh, ooh, yeah<br>
+Oh-oh-oh, ah<br>
+Oh-oh-oh, ooh, yeah<br>
+<br>
+[Interlude]<br>
+Aawitan kita ng kundiman<br>
+Hanggang sa maisip mo na ang aking halaga<br>
+At alam mo 'yon, makasiping na rin kita<br>
+Pero mukhang imposible 'yan<br>
+Kaya ito ako, hanggang dasal na lang<br>
+<br>
+[Chorus]<br>
+Oh, oh<br>
+Aawitan kita ng kundiman<br>
+Oh, at tititigan kita nang lubusan<br>
+Oh, oh<br>
+At sa eksenang ito, oh, please<br>
+'Wag ka nang lalayo<br>
+Kaya't aawitan na lang kita ng kundiman<br>
+</p>
+    </div>
+    <video controls>
+        <source src="OPM/Karaoke/song4.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="song5" class="song-details">
+    <button class="close-btn" onclick="closeSongDetails('song5')">Close</button>
+    <img src="OPM/Images/song5.jpg" alt="Song 5 Image">
+    <audio controls>
+        <source src="OPM/Audio/song5.mp3" type="audio/mpeg">
+    </audio>
+    <div class="lyrics">
+        <h3>Lyrics:</h3>
+        <p>[Intro]<br>
+One, two, three, four<br>
+<br>
+[Verse 1]<br>
+Ngayon ko lang natagpuan<br>
+Ang tanging kahinaan<br>
+At lumipas ang sandali<br>
+At hindi na mapakali<br>
+<br>
+[Pre-Chorus]<br>
+Pero sa'yo<br>
+<br>
+[Chorus]<br>
+Labis-labis akong nasasabik na makapiling ka na<br>
+Labis-labis ang mga halik nang matagpuan na kita, oh, oh-oh<br>
+<br>
+[Verse 2]<br>
+Pag-ibig ang kahulugan<br>
+Ako'y meron palaging paraan<br>
+Bakit si Marvin at Jolina<br>
+Sa palabas lang magkasama?<br>
+<br>
+[Pre-Chorus]<br>
+Pero sa'yo<br>
+<br>
+[Chorus]<br>
+Labis-labis akong nasasabik na makapiling ka na<br>
+Labis-labis na ang mga halik nang matagpuan na kita, oh, oh-oh<br>
+<br>
+[Bridge]<br>
+Minsan na lang ako magkaganito<br>
+Minsan na lang ako muling mabuo<br>
+Kaya sabihin mo na, sabihin mo na, giliw ko<br>
+<br>
+[Chorus]<br>
+At labis-labis akong nasasabik na makapiling ka na<br>
+Labis-labis akong nasasabik, oh<br>
+Labis-labis akong nasasabik na makapiling ka na<br>
+Labis-labis na ang mga halik nang matagpuan na kita, oh, oh-oh<br>
+<br>
+[Outro]<br>
+Matagpuan ka, oh-oh-oh<br>
+Oh, woah, oh<br>
+</p>
+    </div>
+    <video controls>
+        <source src="Songs/OPM/Karaoke/song5.mp4" type="video/mp4">
+    </video>
+</div>
+<!-- Add more song popups similarly -->
+
+<a href="Favorites.html" class="home-btn">Back</a>
+
+<script>
+// Get all audio and video elements
+const allMedia = document.querySelectorAll("audio, video");
+
+// Stop all media
+function pauseAllMedia() {
+    allMedia.forEach(media => {
+        media.pause();
+        media.currentTime = 0; // reset to start
+    });
+}
+
+// Show popup
+function showSongDetails(id) {
+    pauseAllMedia(); // stop anything playing
+    document.getElementById(id).style.display = "block";
+}
+
+// Close popup
+function closeSongDetails(id) {
+    pauseAllMedia(); // stop media when closing
+    document.getElementById(id).style.display = "none";
+}
+
+// Allow only ONE media to play at a time
+allMedia.forEach(media => {
+    media.addEventListener("play", () => {
+        allMedia.forEach(other => {
+            if (other !== media) {
+                other.pause();
+            }
+        });
+    });
+});
+</script>
+
+
+</body>
+</html>
